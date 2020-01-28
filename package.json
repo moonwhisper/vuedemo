@@ -10,7 +10,9 @@
   "dependencies": {
     "core-js": "^3.4.4",
     "mint-ui": "^2.2.13",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.1.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
@@ -19,6 +21,8 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
@@ -38,5 +42,17 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "description": "a vue project demo",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moonwhisper/vuedemo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moonwhisper/vuedemo/issues"
+  },
+  "homepage": "https://github.com/moonwhisper/vuedemo#readme"
 }
