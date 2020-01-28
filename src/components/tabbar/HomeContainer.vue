@@ -10,9 +10,9 @@
 
        <!-- 九宫格到六宫格的改造工程-->
        <ul class="mui-table-view mui-grid-view mui-grid-9">
-           <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+           <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/newslist">
                <img src="../../assets/menu1.png" alt="">
-               <div class="mui-media-body">新闻资讯</div></a></li>
+               <div class="mui-media-body">新闻资讯</div></router-link></li>
            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                <img src="../../assets/menu2.png" alt="">
                <div class="mui-media-body">图片分享</div></a></li>
@@ -48,7 +48,7 @@ export default {
   methods: {
     // 获取轮播图数据
     getLunbotu() {
-       this.$http.get("http://120.77.181.41:3000/api/getcover").then(result => {
+       this.$http.get("api/getcover").then(result => {
           console.log(result.body)
            if(result.body.status === 1) {
                this.lubutuList = result.body.imgs

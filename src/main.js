@@ -20,6 +20,17 @@ import VueResource from 'vue-resource'
 // 2.2 安装vue-resource
 Vue.use(VueResource)
 
+// 设置请求的根路径
+Vue.http.options.root = 'http://120.77.181.41:3000'
+
+// 导入格式化时间的插件
+import moment from 'moment'
+// 定义全局的过滤器
+Vue.filter('dateFormat', function (dateStr, pattern='YYYY-MM-DD HH:mm:ss') {
+  return moment(dateStr).format(pattern)
+})
+
+
 Vue.config.productionTip = false
 
 new Vue({
