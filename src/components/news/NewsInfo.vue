@@ -14,7 +14,7 @@
         <div class="content" v-html="newsinfo.content"></div>
 
         <!-- 评论子组件区域 -->
-        <comment-box :id="this.id"></comment-box>
+        <comment-box :id="this.id" :getCommentsUrl="this.getcommentsurl" :post-comments-url="this.postcommentsurl"></comment-box>
     </div>
 </template>
 
@@ -30,7 +30,9 @@
             return {
                 // 将url地址中传递过来的id值，挂载到data上，方便以后调用
                 id: this.$route.query.id,
-                newsinfo: []
+                newsinfo: [],
+                getcommentsurl: 'api/getnewscom?newsid=',
+                postcommentsurl: 'api/addnewscom?newsId='
             }
         },
         methods: {

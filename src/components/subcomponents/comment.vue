@@ -35,11 +35,12 @@
             }
         },
         props: [
-          'id'
+          'id', 'getCommentsUrl', 'postCommentsUrl'
         ],
         methods: {
             getComments(){
-                this.$http.get('api/getnewscom?newsid=' + this.id + '&pageIdx=' + this.pageIndex).then(result => {
+                // getCommentsUrl: 'api/getnewscom?newsid='
+                this.$http.get(this.getCommentsUrl + this.id + '&pageIdx=' + this.pageIndex).then(result => {
                     if(result.body.status === 1) {
                         // this.commentList = result.body.comments
                         // 每当获取新评论数据的时候，不要把老数据情况覆盖，而是应该在后面追加新的数据
@@ -66,7 +67,8 @@
                 // 参数1： 请求的URL地址
                 // 参数2： 提交给服务器的数据对象 { content: this.msg }
                 // 参数3:  定义提交的时候，表单中数据的格式 { emulateJSON: true }
-                this.$http.post('api/addnewscom?newsId=' + this.$route.query.id, {
+                // 'api/addnewscom?newsId='
+                this.$http.post(this.postCommentsUrl + this.$route.query.id, {
                     content: this.msg.trim()
                 }).then( result => {
                     if(result.body.status === 1) {
