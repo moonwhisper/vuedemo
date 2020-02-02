@@ -9,7 +9,10 @@
         <hr>
 
         <!-- 缩略图区域 -->
-
+        <div class="thumbs">
+            <img class="preview-img" v-for="(item, index) in list" :key="item.src" :src="item.src"
+                 height="100" @click="$preview.open(index, list)">
+        </div>
 
         <!-- 图片内容区域 -->
         <div class="content" v-html="photoinfo.intro"></div>
@@ -30,7 +33,9 @@
                 // 图片详情
                 photoinfo: {},
                 getcommentsurl: 'api/getphocom?phoId=',
-                postcommentsurl: 'api/addphocom?phoid='
+                postcommentsurl: 'api/addphocom?phoid=',
+                // 缩略图的数组
+                list: []
             }
         },
         methods: {
@@ -38,7 +43,16 @@
                 // 获取图片的详情
                 this.$http.get('api/getphodetail?phoId=' + this.id).then(result => {
                     if(result.body.status === 1) {
-                        this.photoinfo = result.body.pho
+                        // 循环每个图片数据，补全图片的宽和高
+                        result.body.pho.phos.forEach( item => {
+                            var temp = {}
+                            temp.src = item
+                            temp.w = 300
+                            temp.h = 400
+
+                            this.list.push(temp)
+                        })
+
                     } else {
                         Toast('获取图片列表失败！')
                     }
@@ -76,6 +90,13 @@
             font-size: 13px;
             line-height: 30px;
             text-align: left;
+        }
+
+        .thumbs{
+            text-align: left;
+            img{
+                margin: 10px;
+            }
         }
     }
 </style>

@@ -32,6 +32,10 @@ Vue.filter('dateFormat', function (dateStr, pattern='YYYY-MM-DD HH:mm:ss') {
   return moment(dateStr).format(pattern)
 })
 
+// 安装图片预览插件
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
+
 
 Vue.config.productionTip = false
 
