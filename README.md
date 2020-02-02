@@ -85,3 +85,8 @@ a vue project demo
 1. 使用插件vue-preview这个插件
 2. 获取到所有的图片列表，然后使用v-for指令渲染数据
 3. img标签上的class不能去掉
+
+## 绘制 商品列表页面，并美化
+    注意： 一定要区分 this.$route 和 this.$router 两个对象
+    其中， this.$route是路由参数对象，所有路由中的参数， params, query都属于它
+    其中， this.$router是一个路由导航对象， 用它可以方便地使用JS代码，实现路由的前进、后退、跳转到新的URL
