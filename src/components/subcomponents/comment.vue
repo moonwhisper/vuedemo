@@ -68,7 +68,7 @@
                 // 参数2： 提交给服务器的数据对象 { content: this.msg }
                 // 参数3:  定义提交的时候，表单中数据的格式 { emulateJSON: true }
                 // 'api/addnewscom?newsId='
-                this.$http.post(this.postCommentsUrl + this.$route.query.id, {
+                this.$http.post(this.postCommentsUrl + this.id, {
                     content: this.msg.trim()
                 }).then( result => {
                     if(result.body.status === 1) {

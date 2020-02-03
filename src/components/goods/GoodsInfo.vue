@@ -37,8 +37,8 @@
                 </div>
             </div>
             <div class="mui-card-footer">
-                <mt-button type="primary" size="large" plain>图文介绍</mt-button>
-                <mt-button type="danger" size="large" plain>商品评论</mt-button>
+                <mt-button type="primary" size="large" plain @click="goDesc(id)">图文介绍</mt-button>
+                <mt-button type="danger" size="large" plain @click="goComment(id)">商品评论</mt-button>
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@
             }
         },
         methods: {
-            getLunbotu() {
+            getGoodsInfo() {
                 this.$http.get('api/getgoddetail?godId=' + this.id).then(result => {
                     if(result.body.status === 1) {
                         this.goodsinfo = result.body.god
@@ -71,10 +71,18 @@
                         Toast('获取商品详情数据失败')
                     }
                 })
+            },
+            goDesc(id) {
+                // 点击使用编程式导航跳转到图文介绍页面
+                this.$router.push({name: 'goodsdesc', params: { id }})
+            },
+            goComment(id) {
+                // 点击使用编程式导航跳转到评论页面
+                this.$router.push({name: 'goodscomment', params: { id }})
             }
         },
         created() {
-            this.getLunbotu()
+            this.getGoodsInfo()
         },
         components: {
             swiper,
