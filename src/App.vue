@@ -4,7 +4,11 @@
 <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
 
     <!------ 顶部header区域 ------>
-    <mt-header fixed title="黑马程序员 Vue项目"></mt-header>
+    <mt-header fixed title="黑马程序员 Vue项目">
+        <span slot="left" @click="goBack" v-show="flag">
+            <mt-button icon="back">返回</mt-button>
+        </span>
+    </mt-header>
 
     <!------ router-view区域 ----->
       <transition>
@@ -22,7 +26,7 @@
               <span class="mui-tab-label">会员</span>
           </router-link>
           <router-link class="mui-tab-item" to="/shopcar">
-              <span class="mui-icon shopcar"><span class="mui-badge" id="badge">0</span></span>
+              <span class="mui-icon shopcar"><span class="mui-badge" id="badge">{{ this.$store.getters.getAllCount }}</span></span>
               <span class="mui-tab-label">购物车</span>
           </router-link>
           <router-link class="mui-tab-item" to="/search">
@@ -40,6 +44,33 @@
 
 export default {
     name: 'app',
+    data() {
+        return {
+            flag: false
+        }
+    },
+    methods: {
+        goBack() {
+            // 点击后退
+            this.$router.go(-1)
+        }
+    },
+    watch: {
+        '$route.path': function (newVal) {
+            if(newVal === '/home') {
+                this.flag = false
+            } else {
+                this.flag = true
+            }
+        }
+    },
+    created() {
+        if(this.$route.path === '/home') {
+            this.flag = false
+        } else {
+            this.flag = true
+        }
+    },
     beforeCreate() {
         document.querySelector('body').setAttribute('style','background-color: #fff')
     },

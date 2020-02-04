@@ -89,4 +89,13 @@ a vue project demo
 ## 绘制 商品列表页面，并美化
     注意： 一定要区分 this.$route 和 this.$router 两个对象
     其中， this.$route是路由参数对象，所有路由中的参数， params, query都属于它
-    其中， this.$router是一个路由导航对象， 用它可以方便地使用JS代码，实现路由的前进、后退、跳转到新的URL
+    其中， this.$router是一个路由导航对象， 用它可以方便地使用JS代码，实现路由的前进、后退、跳转到新的URL中 
+    
+## vuex
+1. vuex是为了保存组件之间共享的数据而诞生的，这样可以避免父子组件之间的传值
+2. 只有共享的数据，才有权利放到vuex中，组件内部私有的数据，只要放到组件的data中国即可
+3. state中的数据不能直接修改，如果想要修改，必须通过mutations
+4. 如果组件想要直接从state上获取数据，需要this.$store.state.***
+5. 如果组件想要修改数据，必须使用mutations提供的方法，需要通过this.$store.commit('方法的名称', 唯一的参数)
+6. 如果store中state上的数据，在对外提供的时候，需要做一层包装，那么，推荐使用getters，如果需要使用，则用this.$store.getters.***
+

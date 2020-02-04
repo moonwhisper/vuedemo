@@ -103,6 +103,17 @@
             addToShopCar() {
                 // 添加到购物车
                 this.ballFlag = ! this.ballFlag
+                // {id: 商品的id, name: 商品的名称,  count: 要购买的数量, price: 商品的单价, selected: 是否选中, img: 商品的图片地址}
+                var info = {
+                    id: this.id,
+                    name: this.goodsinfo.name,
+                    count: this.selectedCount,
+                    price: this.goodsinfo.newPrice,
+                    selected: true,
+                    img: this.goodsinfo.imgIntro[0]}
+
+                // 调用store中的mutations, 来将商品加入购物车
+                this.$store.commit('addToCar', info)
             },
             beforeEnter(el) {
                 el.style.transform = "translate(0, 0)"
