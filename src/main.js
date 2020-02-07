@@ -29,6 +29,10 @@ Vue.http.options.emulateJSON = true
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
+import Vant from 'vant'
+import 'vant/lib/index.css'
+Vue.use(Vant)
+
 // 每次刚进入网站时，肯定会调用main.js，在刚调用的时候，先从本地存储中，把购物车的数据读出来，放到store中
 
 var car = JSON.parse(localStorage.getItem('car') || '[]')
@@ -51,7 +55,7 @@ var store = new Vuex.Store({
 
       state.car.some(item => {
         if(item.id === goodsinfo.id) {
-          item.count += parseInt(goodsinfo.count)
+          item.count = parseInt(item.count) +  parseInt(goodsinfo.count)
           flag = true
           return true
         }
@@ -146,6 +150,9 @@ Vue.use(VuePreview)
 
 
 Vue.config.productionTip = false
+
+// 关闭浏览器或刷新页面时，清空localStorage
+window.addEventListener('beforeunload', ()=>{ localStorage.removeItem('car')})
 
 new Vue({
   // 1.4 挂载路由对象到vm实例上

@@ -77,6 +77,8 @@ export default {
     beforeDestroy() {
         document.querySelector('body').removeAttribute('style')
     },
+    mounted() {
+    },
     components: {
     }
 }
