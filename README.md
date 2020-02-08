@@ -1,6 +1,6 @@
 # vuedemo
 
-a vue project demo
+a vue project demo（代码为学习代码，参考黑马Vue教程，来源https://www.bilibili.com/video/av50680998?p=1）
 
 ## 制作首页App组件
 1. 完成Header区域，使用的是Mint-UI中的Header组件
